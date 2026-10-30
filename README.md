@@ -22,9 +22,6 @@ Gravity               | $g$
 Hamaker Constant      | $A$
 Mean Free Path of Gas | $\lambda$  
 
-Note that $U$ is relative to the wall/symmetry plane, so
-for a drop-drop impact this is half the relative speed of the impact $V=2U$. Gravity $g$ is only physically meaningful for drop-wall impacts.
-
 The problem is solved non-dimensionally, and the following non-dimensional parameters must be given to the code. These are chosen for consistency with the existing oomph-lib free-surface Navier-Stokes solvers.
 
 Non-Dim Parameter | Symbol | Formula
@@ -50,7 +47,7 @@ The folders mirror the folders in the default oomph-lib installation, and must b
 
 It is recommended to use the linear solver mumps to significantly increase the speed of the computation. Installation instructions are available on the oomph-lib website. This requires compiling with MPI, but this driver code has not been tested with parallel execution on a single simulation.
 
-There are various simulation settings that can be adjusted in the namespace ``` Global_Sim_Settings ``` inside ```drop_impact.cc```.
+There are various simulation settings that can be adjusted in the namespace ``` Global_Sim_Settings ``` inside ```drop_bath_impact.cc```.
 
 ## Output and Post-Processing
 
@@ -58,4 +55,4 @@ An already existing folder for outputs must be specified. This can be passed as 
 
 The non-dimensional parameters used and simulation settings are outputted in the header of ```trace.dat```. Below this at each time-step, the current time, time-step size, temporal error, minimum z value and number of fluid elements is appended.
 
-At each time-step ```n```, the gas elements are outputted in the file ```surface_elements_n.dat```. Each element has its nodal data outputted in the format [ $r$, $z$, $u_r$, $u_z$, $p_g$, $\theta$ ], where $\theta$ is a normalised arc length from the base (at $r=0$) to the top of the drop. The elements are not necessarily in order along the surface, and $\theta$ can be used to sort the boundary.
+At each time-step ```n```, the gas elements are outputted in the file ```surface_elements_n.dat```. Each element has its nodal data outputted in the format [ $r$, $z$, $u_r$, $u_z$, $p_g$, $\theta$ ], where $\theta$ is a normalised arc length from the base (at $r=0$) to the top of the drop. The elements are not necessarily in order along the surface, and $\theta$ can be used to sort the boundary. The bath surface is similarly outputted to ```surface_elements_bath_n.dat```, in the format [ $r$, $z$, $u_r$, $u_z$, $\theta$ ], where $\theta$ runs from $r=0$ to the edge of the bath.
