@@ -70,7 +70,7 @@ double Bath_radius = 10.0;
 double t_max = 20.0;
 
 /// Use Gas Kinetic Effects?
-bool Use_GKE = false;
+bool Use_GKE = true;
 
 /// Non-dim Mean free path of gas
 double Mean_Free_Path = 8.625e-5;
