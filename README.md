@@ -1,6 +1,6 @@
 # Drop Impact
 
-PUT PAPER LINKS HERE
+Links to related publications to be put here.
 
 ## The Problem
 
